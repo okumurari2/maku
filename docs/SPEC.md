@@ -2,7 +2,7 @@
 
 A self-contained summary of the current spec, written so a reader with no other context (a chat, a new session) can get
 the whole picture from this one file. The full spec is [AMBIENT.md](AMBIENT.md) (Japanese) and wins on any conflict.
-Last synced with AMBIENT.md: 2026-10-11.
+Last synced with AMBIENT.md: 2026-10-16.
 
 ## What it is
 
@@ -38,7 +38,7 @@ coprime and none is a multiple of 16, so the parts keep drifting out of phase. N
 
 Articulations (set per world, `maku_voices.c`): STRK struck, SOFT soft strike, SWEL swell (~2 s, held to the next note),
 BOW bowed, HOLD (~1.4 s, held until the chord changes). The floor and haze are held (tie) in most worlds and at least one
-of them always is. Voice shares per part: floor 3 (a held PHYS floor 2), held haze 2, voice 2, kick 1 (8 voices total).
+of them always is. Voice shares per part: floor 3 (a held PHYS floor 2), held haze 2, voice 2, kick uncapped (8 voices total).
 Above kick density 96 the shares change to make room for the hats: kick 2, floor 2, voice 1.
 
 ## Controls
@@ -71,7 +71,7 @@ Above kick density 96 the shares change to make room for the hats: kick 2, floor
 
 | Button | Verb | Axis | What it does | Parameters |
 | --- | --- | --- | --- | --- |
-| FX | SINK 潜る | depth | kick fades out, reverb / delay / reverse sends deepen, reverb feedback towards 0.995, dry voices step back; defaults dive ~0.4 s, back ~3 s after HOLD | RISE / HOLD / FADE |
+| FX | SINK 潜る | depth | kick fades out, reverb / delay / reverse sends deepen, reverb feedback towards 0.995, dry voices step back; defaults dive ~0.5 s, back ~3 s after HOLD | RISE / HOLD / FADE |
 | SCL | CASCADE 降り注ぐ | range, note count | the arp plays every step (rests too), octave +1 / +2 and a third above stack | RISE / HOLD / FADE |
 | ENV | SWELL 膨らむ | time | the floor and the haze strike their chord again; attack / release up towards their top; held voices keep the chord, struck ones repeat it | RISE / HOLD / FADE |
 | LFO | WOBBLE 揺れる | motion | filter LFO faster and deeper, chorus send up, pitch wobble | RISE / HOLD / FADE |
@@ -137,7 +137,7 @@ Space (all in `fx.c`): ensemble chorus, tape delay, ROOM reverb (a hall: long co
 (amount from the haze's AIR). INSERT (Felucca 1.5): a per-world PHASR / CHOR (floor) or FLANG / CHOR (haze), kept on trial.
 Pitch levels: the floor and the haze each draw STILL 70 % / SWAY 22 % / WARP 8 % (never both WARP), which bounds the haze
 GRAIN's RAND and a swept INSERT's DEPTH and picks the INSERT (AMBIENT.md).
-CPU estimate: worst case ~51 % of the device (host-derived, not measured); overload protection drops voices.
+CPU estimate: worst case ~51 % of the device, ~58 % with the loudest background bed (host-derived, not measured); overload protection drops voices.
 
 ## Kept / dropped
 

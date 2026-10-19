@@ -181,7 +181,7 @@ static uint32_t maku_is_tie(uint32_t i, uint32_t idx)
 #define MAKU_FOUR 96u
 
 /* The 8 voices are shared: a held part sounds all the time (and its tails ring on), so it gets a share and keeps to it: the
- * floor 3 (a chord of three, or two and a tail), the haze 2, the arp 2, the kick 1 (and the struck floor / haze as before). 0: none */
+ * floor 3 (a chord of three, or two and a tail), the haze 2, the arp 2, the kick uncapped (2 above density 96) (and the struck floor / haze as before). 0: none */
 static uint32_t maku_eff(void);
 static uint32_t maku_voice_cap(const track_t *t)
 {

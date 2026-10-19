@@ -3,3 +3,9 @@ build/
 __pycache__/
 *.fwsc
 .venv/
+
+# Security & common excludes
+.env*
+*.key
+*.pem
+node_modules/
