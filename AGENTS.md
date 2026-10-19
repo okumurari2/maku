@@ -39,3 +39,10 @@ MAKU (幕間機) プロジェクトでは、各 AI モデルの得意領域に�
 - 衝突しやすいファイル：`tests/golden.txt`、`tests/cpu_baseline.txt`、`docs/decisions.md`（着手前にタスクの `files:` で確保する）
 - 生成物（衝突したら作り直すもの）：`tests/golden.txt`（`GOLDEN_UPDATE=1 sh tests/run_tests.sh`）、`./build.sh` の出力
 - **共有脳（`.agents/`）の仕組みそのものを変えたいときは、このリポジトリを直さず上流 https://github.com/okumurari2/agents-kit に push する**（詳細は `.agents/PROTOCOL.md` 末尾）。
+
+## 運用ルール（共通）
+- 新しい設定・メモ・計画系ファイルを作る前に `~/dev/INVENTORY.md` を読み、既存ファイルの更新で済むなら新規作成しない。
+- メモ類は `notes/` に集約し、命名は `YYYY-MM-DD_内容.md`。
+- 作業ブランチは作成時に `git push -u origin HEAD`、コミット後もpushする。
+- ~/dev のスクリプトの出力先は直書きせず環境変数 `OUTPUT_DIR` で渡す。テスト時は一時フォルダへ出力する。
+- 各リポジトリの `NOTES.md` 冒頭に、ペアになっている相手側リポジトリのパスを1行書く。
